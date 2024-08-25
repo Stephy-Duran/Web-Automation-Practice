@@ -38,7 +38,7 @@ public class CheckoutOverview extends BasePage {
     }
 
     public CheckoutCompletePage clickOnFinishBtn() {
-        super.clickElement(finishBtn);
-        return new CheckoutCompletePage(driver);
+        super.clickElement(this.finishBtn);
+        return new CheckoutCompletePage(super.driver);
     }
 }
