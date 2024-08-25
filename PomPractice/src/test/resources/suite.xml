@@ -8,6 +8,7 @@
     <test name="Login test">
         <classes>
             <class name="com.globant.academy.tests.BuyProductsTest"/>
+            <class name="com.globant.academy.tests.RemoveItemsTest"/>
         </classes>
     </test>
 

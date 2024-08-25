@@ -21,16 +21,16 @@ public class ShoppingCartPage extends BasePage {
     }
     
     public boolean areAllProductsSelectedPresent(int amountProductsSelected) {
-        return productsLis.size() == amountProductsSelected;
+        return this.productsLis.size() == amountProductsSelected;
     }
     
     public CheckoutUserInformationPage clickOnCheckoutBtn() {
-        super.clickElement(checkoutBtn);
-        return new CheckoutUserInformationPage(driver);
+        super.clickElement(this.checkoutBtn);
+        return new CheckoutUserInformationPage(super.driver);
     }
     
     public void removeAllProductsFromShoppingCart() {
-        removeItemBtn.forEach(WebElement::click);
+        this.removeItemBtn.forEach(WebElement::click);
     }
     
     public boolean wereAllProductsRemoved() {

@@ -26,7 +26,7 @@ public class LoginPage extends BasePage {
     }
 
     public HomePage submitDataLogin() {
-        super.clickElement(submitBtn);
-        return new HomePage(driver);
+        super.clickElement(this.submitBtn);
+        return new HomePage(super.driver);
     }
 }

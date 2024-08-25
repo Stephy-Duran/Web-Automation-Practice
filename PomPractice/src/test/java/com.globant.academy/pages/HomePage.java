@@ -10,46 +10,44 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 public class HomePage extends BasePage {
-
+    
     private static final Logger log = LoggerFactory.getLogger(HomePage.class);
     @FindBy(css = ".inventory_item .btn_inventory")
-    List<WebElement> addToCartBtns;
-
+    private List<WebElement> addToCartBtns;
     @FindBy(xpath = "//*[@class='shopping_cart_link']")
-    WebElement shoppingCartBtn;
-
-
+    private WebElement shoppingCartBtn;
+    @FindBy(className = "bm-burger-button")
+    private WebElement burgerMenu;
+    
     public HomePage(WebDriver driver) {
         super(driver);
     }
-
+    
     public void selectRandomProduct(int quantityOfProductToAdd) {
-        if (addToCartBtns.size() >= quantityOfProductToAdd) {
+        if(this.addToCartBtns.size() >= quantityOfProductToAdd) {
             Random random = new Random();
             Set<Integer> selectedProducts = new HashSet<>();
-
-            while (quantityOfProductToAdd > 0) {
-                int productIndex = random.nextInt(addToCartBtns.size());
-
-                if (!selectedProducts.contains(productIndex)) {
-                    addToCartBtns.get(productIndex).click();
+            while(quantityOfProductToAdd > 0) {
+                int productIndex = random.nextInt(this.addToCartBtns.size());
+                if(!selectedProducts.contains(productIndex)) {
+                    this.addToCartBtns.get(productIndex).click();
                     selectedProducts.add(productIndex);
                     quantityOfProductToAdd--;
                 }
             }
-        } else {
+        }
+        else {
             log.error("[Error]Index out of Bounds, the amounts of products is: {}", addToCartBtns.size());
         }
     }
-
+    
     public boolean validateQuantityShoppingCart(int quantity) {
-        return Integer.parseInt(shoppingCartBtn.getAttribute("textContent")) == quantity;
+        return Integer.parseInt(this.shoppingCartBtn.getAttribute("textContent")) == quantity;
     }
-
+    
     public ShoppingCartPage clickShoppingCartIcon() {
         this.shoppingCartBtn.click();
-        return new ShoppingCartPage(driver);
+        return new ShoppingCartPage(super.driver);
     }
-
-
+    
 }

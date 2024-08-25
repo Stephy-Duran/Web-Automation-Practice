@@ -14,10 +14,10 @@ public class CheckoutCompletePage extends BasePage {
     }
 
     public boolean isSuccessMessagePresent(String message) {
-        return successMessage.getAttribute("innerText").equalsIgnoreCase(message);
+        return this.successMessage.getAttribute("innerText").equalsIgnoreCase(message);
     }
 
     public String message() {
-        return successMessage.getAttribute("innerText");
+        return this.successMessage.getAttribute("innerText");
     }
 }

@@ -28,12 +28,12 @@ public class BuyProductsTest extends BaseTest {
                               "The quantity does not match ");
             
             ShoppingCartPage shoppingCartPage = homePage.clickShoppingCartIcon();
-            Assert.assertTrue(shoppingCartPage.areAllProductsSelectedPresent(3));
+            Assert.assertTrue(shoppingCartPage.areAllProductsSelectedPresent(quantityOfProductsToPurchase));
             
             CheckoutUserInformationPage checkoutUserInformationPage = shoppingCartPage.clickOnCheckoutBtn();
             checkoutUserInformationPage.fillOutUserInformation(name, lastName, postalCode);
             CheckoutOverview checkoutOverview = checkoutUserInformationPage.clickOnContinueBtn();
-            Assert.assertTrue(checkoutOverview.isTotalAmountOfTheBillCorrect(3));
+            Assert.assertTrue(checkoutOverview.isTotalAmountOfTheBillCorrect(quantityOfProductsToPurchase));
             
             CheckoutCompletePage checkoutCompletePage = checkoutOverview.clickOnFinishBtn();
             String actualMessage = checkoutCompletePage.message();
