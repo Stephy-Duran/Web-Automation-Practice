@@ -38,31 +38,7 @@ public class HomePage extends BasePage {
                 }
             }
         } else {
-            log.info("[Error]Index out of Bounds, the amounts of products is: {}", addToCartBtns.size());
-        }
-    }
-
-    public void selectRandomProduct1(int quantityOfProductToAdd) {
-        try {
-            Random random = new Random();
-            Set<Integer> selectedProducts = new HashSet<>();
-
-            while (quantityOfProductToAdd > 0) {
-                int productIndex = random.nextInt(addToCartBtns.size());
-
-                if (!selectedProducts.contains(productIndex)) {
-                    addToCartBtns.get(productIndex).click();
-                    selectedProducts.add(productIndex);
-                    quantityOfProductToAdd--;
-                }
-            }
-
-        } catch (IndexOutOfBoundsException e) {
             log.error("[Error]Index out of Bounds, the amounts of products is: {}", addToCartBtns.size());
-        } catch (NoSuchElementException e) {
-            log.error("Error when clicking on an 'add to cart' button: Item not found");
-        } catch (Exception e) {
-            log.error("An unexpected error occurred: {} ", e.getMessage());
         }
     }
 
