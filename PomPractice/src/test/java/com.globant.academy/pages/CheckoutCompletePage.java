@@ -6,18 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckoutCompletePage extends BasePage {
+    
     @FindBy(css = "[data-test='complete-header']")
     private WebElement successMessage;
-
+    
     public CheckoutCompletePage(WebDriver driver) {
         super(driver);
     }
-
-    public boolean isSuccessMessagePresent(String message) {
-        return this.successMessage.getAttribute("innerText").equalsIgnoreCase(message);
-    }
-
-    public String message() {
-        return this.successMessage.getAttribute("innerText");
+    
+    public String getMessage() {
+        return successMessage.getAttribute("innerText");
     }
 }

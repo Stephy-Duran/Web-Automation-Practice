@@ -8,9 +8,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.globant.academy.tests.utils.BaseTest;
 
+import java.io.IOException;
+
 public class RemoveItemsTest extends BaseTest {
     
-    private static final Logger log = LoggerFactory.getLogger(BuyProductsTest.class);
+    private static final Logger log = LoggerFactory.getLogger(PurchaseProductTest.class);
     
     @Test
     public void removeShoppingCartProducts() {
@@ -18,19 +20,20 @@ public class RemoveItemsTest extends BaseTest {
             String userName = JsonDataReader.getUserName();
             String password = JsonDataReader.getPassword();
             int quantityOfProductsToPurchase = JsonDataReader.getQuantityOfProductToPurchase();
-            LoginPage loginPage = super.openLoginPage();
+            
+            LoginPage loginPage = openLoginPage();
             loginPage.login(userName, password);
             HomePage homePage = loginPage.submitDataLogin();
-            homePage.selectRandomProduct(quantityOfProductsToPurchase);
+            homePage.selectRandomProducts(quantityOfProductsToPurchase);
             Assert.assertTrue(homePage.validateQuantityShoppingCart(quantityOfProductsToPurchase),
                               "The quantity does not match ");
             ShoppingCartPage shoppingCartPage = homePage.clickShoppingCartIcon();
             shoppingCartPage.removeAllProductsFromShoppingCart();
             Assert.assertTrue(shoppingCartPage.wereAllProductsRemoved());
         }
-        catch(Exception e) {
+        catch(IOException e) {
             log.error("Error in RemoveItemsTest, check if you put a correct key from JSON file, ", e);
+            Assert.fail("Test failed due to exception: " + e.getMessage());
         }
     }
-    
-    }
+}

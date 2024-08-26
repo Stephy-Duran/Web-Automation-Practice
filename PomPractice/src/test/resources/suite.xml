@@ -3,12 +3,11 @@
 <suite name="Web automation Suit" verbose="1">
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.saucedemo.com/"/>
-    <parameter name="userName" value="standard_user"/>
-    <parameter name="password" value="secret_sauce"/>
     <test name="Login test">
         <classes>
-            <class name="com.globant.academy.tests.BuyProductsTest"/>
+            <class name="com.globant.academy.tests.PurchaseProductTest"/>
             <class name="com.globant.academy.tests.RemoveItemsTest"/>
+            <class name="com.globant.academy.tests.LogoutTest"/>
         </classes>
     </test>
 
