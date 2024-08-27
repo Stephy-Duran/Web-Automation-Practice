@@ -1,0 +1,7 @@
+{
+  "userName": "standard_user",
+  "password": "secret_sauce",
+  "thankYouMessage": "Thank you for your order!",
+  "quantityOfProductToPurchase": 3,
+  "oneProduct": 1
+}
