@@ -13,18 +13,24 @@ public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     
+    /**
+     Constructor for the BasePage class. This method initializes the WebElements and creates a wait object.
+     
+     @param driver WebDriver instance used to interact with the browser.
+     @author Stephany Duran
+     */
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this); //Iniciar los elementos de la pagina tan pronto la construyo
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     
-    public void clickElement(WebElement element) {
+    public void customClickElement(WebElement element) {
         waitToBeClickable(element);
         element.click();
     }
     
-    public void sendKeys(WebElement element, String text) {
+    public void customSendKeys(WebElement element, String text) {
         waitElementVisibility(element);
         element.sendKeys(text);
     }
@@ -35,14 +41,5 @@ public class BasePage {
     
     public void waitElementVisibility(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
-    }
-    
-    public void waitSomeSeconds(long seconds) {
-        try {
-            Thread.sleep(seconds * 1000); // Pausa el hilo actual por 'millis' milisegundos
-        }
-        catch(InterruptedException e) {
-            e.printStackTrace(); // Maneja la excepción si el hilo es interrumpido mientras duerme
-        }
     }
 }

@@ -21,14 +21,13 @@ public class CheckoutUserInformationPage extends BasePage {
     }
     
     public void fillOutUserInformation(String name, String lastName, String postalCode) {
-        super.sendKeys(this.firstNameTestTxt, name);
-        super.sendKeys(this.lastNameTxt, lastName);
-        super.sendKeys(this.zipOrPostalCodeTxt, postalCode);
-        waitSomeSeconds(5);
+        customSendKeys(firstNameTestTxt, name);
+        customSendKeys(lastNameTxt, lastName);
+        customSendKeys(zipOrPostalCodeTxt, postalCode);
     }
     
     public CheckoutOverview clickOnContinueBtn() {
-        super.clickElement(this.continueBtn);
-        return new CheckoutOverview(super.driver);
+        customClickElement(continueBtn);
+        return new CheckoutOverview(driver);
     }
 }

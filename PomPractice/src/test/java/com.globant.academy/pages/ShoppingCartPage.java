@@ -10,9 +10,11 @@ import java.util.List;
 public class ShoppingCartPage extends BasePage {
     
     @FindBy(css = ".cart_item")
-    private List<WebElement> productsLis;
+    private List<WebElement> productsList;
+    
     @FindBy(xpath = "/html/body/div/div/div/div[2]/div/div[2]/button[2]")
     private WebElement checkoutBtn;
+    
     @FindBy(css = ".btn.btn_secondary.btn_small")
     private List<WebElement> removeItemBtn;
     
@@ -21,19 +23,19 @@ public class ShoppingCartPage extends BasePage {
     }
     
     public boolean areAllProductsSelectedPresent(int amountProductsSelected) {
-        return this.productsLis.size() == amountProductsSelected;
+        return productsList.size() == amountProductsSelected;
     }
     
     public CheckoutUserInformationPage clickOnCheckoutBtn() {
-        super.clickElement(this.checkoutBtn);
-        return new CheckoutUserInformationPage(super.driver);
+        customClickElement(checkoutBtn);
+        return new CheckoutUserInformationPage(driver);
     }
     
     public void removeAllProductsFromShoppingCart() {
-        this.removeItemBtn.forEach(WebElement::click);
+        removeItemBtn.forEach(WebElement::click);
     }
     
     public boolean wereAllProductsRemoved() {
-        return this.productsLis.isEmpty();
+        return productsList.isEmpty();
     }
 }
