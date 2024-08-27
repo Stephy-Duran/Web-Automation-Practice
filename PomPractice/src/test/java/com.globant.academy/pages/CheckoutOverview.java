@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.globant.academy.pages.utils.BasePage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 public class CheckoutOverview extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(CheckoutOverview.class);
     
     @FindBy(css = "[data-test='finish']")
     private WebElement finishBtn;
@@ -48,6 +51,7 @@ public class CheckoutOverview extends BasePage {
      @author Stephany Duran
      */
     public CheckoutCompletePage clickOnFinishBtn() {
+        log.info("Click on finish button");
         customClickElement(finishBtn);
         return new CheckoutCompletePage(driver);
     }

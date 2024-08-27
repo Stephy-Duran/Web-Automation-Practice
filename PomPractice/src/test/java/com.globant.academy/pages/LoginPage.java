@@ -4,8 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.globant.academy.pages.utils.BasePage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LoginPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
+    
     
     @FindBy(id = "user-name")
     private WebElement userNameField;
@@ -21,6 +25,7 @@ public class LoginPage extends BasePage {
     }
     
     public void login(String userName, String password) {
+        log.info("Filling login fields");
         customSendKeys(userNameField, userName);
         customSendKeys(passwordField, password);
     }

@@ -10,7 +10,7 @@ import java.util.List;
 public class ShoppingCartPage extends BasePage {
     
     @FindBy(css = ".cart_item")
-    private List<WebElement> productsLis;
+    private List<WebElement> productsList;
     
     @FindBy(xpath = "/html/body/div/div/div/div[2]/div/div[2]/button[2]")
     private WebElement checkoutBtn;
@@ -23,7 +23,7 @@ public class ShoppingCartPage extends BasePage {
     }
     
     public boolean areAllProductsSelectedPresent(int amountProductsSelected) {
-        return productsLis.size() == amountProductsSelected;
+        return productsList.size() == amountProductsSelected;
     }
     
     public CheckoutUserInformationPage clickOnCheckoutBtn() {
@@ -36,6 +36,6 @@ public class ShoppingCartPage extends BasePage {
     }
     
     public boolean wereAllProductsRemoved() {
-        return productsLis.isEmpty();
+        return productsList.isEmpty();
     }
 }

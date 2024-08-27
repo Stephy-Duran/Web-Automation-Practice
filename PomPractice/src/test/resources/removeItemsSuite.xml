@@ -3,11 +3,9 @@
 <suite name="Web automation Suit" verbose="1">
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.saucedemo.com/"/>
-    <test name="Login test">
+    <test name="Remove Items test">
         <classes>
-            <class name="com.globant.academy.tests.PurchaseProductTest"/>
             <class name="com.globant.academy.tests.RemoveItemsTest"/>
-            <class name="com.globant.academy.tests.LogoutTest"/>
         </classes>
     </test>
 
